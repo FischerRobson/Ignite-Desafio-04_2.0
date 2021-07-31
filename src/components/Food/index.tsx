@@ -5,7 +5,7 @@ import { Container } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
 
-interface Food {
+export interface Food {
   id: number;
   name: string;
   image: string;
