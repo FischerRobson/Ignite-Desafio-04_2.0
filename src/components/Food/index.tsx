@@ -1,34 +1,33 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
 import api from '../../services/api';
-import { useState } from 'react';
-
-export interface Food {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  price: string;
-  available: boolean;
-}
 
 interface FoodProps {
-  food: Food;
-  handleEditFood: (food: Food) => void;
-  handleDelete: (id: number) => void;
+  id: number
+  name: string
+  description: string
+  price: string
+  available: boolean
+  image: string
 }
 
-export default function Food({ food, handleEditFood, handleDelete }: FoodProps) {
+interface FoodComponentProps {
+  food: FoodProps
+  handleEditFood: (id: FoodProps) => void
+  handleDelete: (id: number) => void
+}
 
-  const [isAvailable, setIsAvailable] = useState(food.available);
+function Food ({ food, handleEditFood, handleDelete }: FoodComponentProps) {
+  const [isAvailable, setIsAvailable] = useState(food.available)
 
   const toggleAvailable = async () => {
     await api.put(`/foods/${food.id}`, {
       ...food,
-      available: !isAvailable,
+       available: !isAvailable,
     });
+
     setIsAvailable(!isAvailable);
   }
 
@@ -77,7 +76,7 @@ export default function Food({ food, handleEditFood, handleDelete }: FoodProps) 
               id={`available-switch-${food.id}`}
               type="checkbox"
               checked={isAvailable}
-              onChange={() => toggleAvailable}
+              onChange={toggleAvailable}
               data-testid={`change-status-food-${food.id}`}
             />
             <span className="slider" />
@@ -85,5 +84,7 @@ export default function Food({ food, handleEditFood, handleDelete }: FoodProps) 
         </div>
       </section>
     </Container>
-  )
-}
+  );
+};
+
+export default Food;

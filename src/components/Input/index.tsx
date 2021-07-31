@@ -8,13 +8,16 @@ import {
 import { useField } from '@unform/core';
 
 import { Container } from './styles';
-import { IconType } from 'react-icons';
+import { IconType } from 'react-icons/lib';
 
-interface InputProps extends HTMLInputElement {
-  Icon: IconType;
+interface InputProps {
+  name: string
+  icon?: IconType
+  placeholder: string
 }
 
-const Input = ({ name, Icon, ...rest }: InputProps) => {
+
+const Input = ({ name, icon: Icon, ...rest }: InputProps) => {
   const inputRef = useRef(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -29,7 +32,7 @@ const Input = ({ name, Icon, ...rest }: InputProps) => {
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
 
-    setIsFilled(!!inputRef.current?.value);
+    setIsFilled(!!inputRef.current); //?.value
   }, []);
 
   useEffect(() => {
