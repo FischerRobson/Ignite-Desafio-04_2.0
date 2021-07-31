@@ -6,29 +6,29 @@ import Modal from '../Modal';
 import Input from '../Input';
 
 interface FoodProps {
-  id: number
-  image: string
-  name: string
-  price: string
-  description: string
-  available: boolean
+  id: number;
+  image: string;
+  name: string;
+  price: string;
+  description: string;
+  available: boolean;
 }
 
 interface ModalEditFoodProps {
-  isOpen: boolean
-  handleUpdateFood: (data: FoodProps) => void
-  editingFood: FoodProps
-  setIsOpen: () => void
+  isOpen: boolean;
+  handleUpdateFood: (data: FoodProps) => void;
+  editingFood: FoodProps;
+  setIsOpen: () => void;
 }
 
-function ModalEditFood ({ isOpen, handleUpdateFood, editingFood, setIsOpen }: ModalEditFoodProps) {
-  const formRef = useRef(null)
+function ModalEditFood({ isOpen, handleUpdateFood, editingFood, setIsOpen }: ModalEditFoodProps) {
+  const formRef = useRef(null);
 
-  const handleSubmit = async (data: FoodProps)  => {
+  const handleSubmit = async (data: FoodProps) => {
     handleUpdateFood(data);
     setIsOpen();
   };
-  
+
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={editingFood}>

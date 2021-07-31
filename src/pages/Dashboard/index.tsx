@@ -8,27 +8,27 @@ import ModalEditFood from '../../components/ModalEditFood';
 import { FoodsContainer } from './styles';
 
 interface FoodProps {
-  id: number
-  image: string
-  name: string
-  price: string
-  description: string
-  available: boolean
+  id: number;
+  image: string;
+  name: string;
+  price: string;
+  description: string;
+  available: boolean;
 }
 
 function Dashboard() {
-  const [foods, setFoods] = useState<FoodProps[]>([])
-  const [editingFood, setEditingFood] = useState({} as FoodProps)
-  const [modalOpen, setModalOpen] = useState(false)
-  const [editModalOpen, setEditModalOpen] = useState(false)
+  const [foods, setFoods] = useState<FoodProps[]>([]);
+  const [editingFood, setEditingFood] = useState({} as FoodProps);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
-  async function getFoods () {
+  async function getFoods() {
     const response = await api.get('/foods');
-    setFoods(response.data)
+    setFoods(response.data);
   }
 
   useEffect(() => {
-    getFoods()
+    getFoods();
   }, [])
 
   const handleAddFood = async (food: FoodProps) => {

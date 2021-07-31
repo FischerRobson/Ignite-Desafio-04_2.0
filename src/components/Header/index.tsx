@@ -4,10 +4,10 @@ import { Container } from './styles';
 import Logo from '../../assets/logo.svg';
 
 interface HeaderProps {
-  openModal: () => void
+  openModal: () => void;
 }
 
-function Header ({ openModal }: HeaderProps) {
+function Header({ openModal }: HeaderProps) {
   return (
     <Container>
       <header>

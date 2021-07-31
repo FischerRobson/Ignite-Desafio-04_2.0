@@ -11,9 +11,9 @@ import { Container } from './styles';
 import { IconType } from 'react-icons/lib';
 
 interface InputProps {
-  name: string
-  icon?: IconType
-  placeholder: string
+  name: string;
+  icon?: IconType;
+  placeholder: string;
 }
 
 
@@ -32,7 +32,7 @@ const Input = ({ name, icon: Icon, ...rest }: InputProps) => {
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
 
-    setIsFilled(!!inputRef.current); //?.value
+    setIsFilled(!!inputRef.current);
   }, []);
 
   useEffect(() => {

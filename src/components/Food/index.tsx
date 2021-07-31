@@ -5,12 +5,12 @@ import { Container } from './styles';
 import api from '../../services/api';
 
 interface FoodProps {
-  id: number
-  name: string
-  description: string
-  price: string
-  available: boolean
-  image: string
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  available: boolean;
+  image: string;
 }
 
 interface FoodComponentProps {
@@ -19,13 +19,13 @@ interface FoodComponentProps {
   handleDelete: (id: number) => void
 }
 
-function Food ({ food, handleEditFood, handleDelete }: FoodComponentProps) {
+function Food({ food, handleEditFood, handleDelete }: FoodComponentProps) {
   const [isAvailable, setIsAvailable] = useState(food.available)
 
   const toggleAvailable = async () => {
     await api.put(`/foods/${food.id}`, {
       ...food,
-       available: !isAvailable,
+      available: !isAvailable,
     });
 
     setIsAvailable(!isAvailable);

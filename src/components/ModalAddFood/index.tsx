@@ -6,22 +6,22 @@ import Modal from '../Modal';
 import Input from '../Input';
 
 interface FoodProps {
-  id: number
-  image: string
-  name: string
-  price: string
-  description: string
-  available: boolean
+  id: number;
+  image: string;
+  name: string;
+  price: string;
+  description: string;
+  available: boolean;
 }
 
 interface ModalEditFoodProps {
-  isOpen: boolean
-  handleAddFood: (data: FoodProps) => void
-  setIsOpen: () => void
+  isOpen: boolean;
+  handleAddFood: (data: FoodProps) => void;
+  setIsOpen: () => void;
 }
 
-function ModalAddFood ({ setIsOpen, handleAddFood, isOpen }: ModalEditFoodProps) {
-  const formRef = useRef(null)
+function ModalAddFood({ setIsOpen, handleAddFood, isOpen }: ModalEditFoodProps) {
+  const formRef = useRef(null);
 
   const handleSubmit = async (data: FoodProps) => {
     handleAddFood(data);
